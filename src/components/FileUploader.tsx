@@ -1,12 +1,13 @@
 import React, { useMemo, useState } from "react";
-import { ListOfFiles } from "./ListOfFiles";
 import axios from "axios";
+import { ListOfFiles } from "./ListOfFiles";
 
 const OAUTH_TOKEN = "YOUR_TOKEN";
 const OUT_OF_LIMIT =
   "Вы превысили лимит по количеству файлов. На Яндекс.Диск загрузится максимум 100 файлов";
 const UPLOAD_URL_ERROR = "Не удалось получить ссылку для загрузки";
 const UPLOAD_FILE_ERROR = "Не удалось загрузить файл";
+
 export const FileUploader = () => {
   const [selectedFiles, setSelectedFiles] = useState<Array<File>>([]);
   const filesLimit = 2;
@@ -30,6 +31,7 @@ export const FileUploader = () => {
 
   const disabledChange = uniqueSelectedFiles.length >= filesLimit;
   const disabledUpload = uniqueSelectedFiles.length < 1;
+  
   const onFileChange: React.ChangeEventHandler<HTMLInputElement> = (
     e,
   ): void => {
